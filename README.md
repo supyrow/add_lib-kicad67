@@ -116,7 +116,8 @@ lrwxrwxrwx 1 su_pyrow su_pyrow    42 Feb  3 02:20 sym-lib-table -> /home/su_pyro
 # restart kicad and verify
 
 ![kicad-verify-footprint](https://user-images.githubusercontent.com/25697854/216496463-9a708e23-a4e1-49cb-b4a8-bdc7640373fd.png)
-![kicad-verify-symbol](https://user-images.githubusercontent.com/25697854/216496477-fc0d260a-cfa1-46a2-9f07-901ba152fb17.png)
+![kicad-verify-symbol](https://user-images.githubusercontent.com/25697854/216498910-c7b870db-b853-44a8-99be-9d5db758b676.png)
+
 
 
 # enjoy
