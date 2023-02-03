@@ -19,20 +19,10 @@ updates Footprint and Symbol Table files so your custom libraries are reflected 
 ```
 chmod +x kicad_addcustom_library.sh
 ```
-# adjust script variables to match your system
-```
-nano kicad_addcustom_library.sh
-```
-fplib_name="MYfootprintLib"
-pretty_file="MYfootprintLib.pretty"
-fpdescr="MYfootprintLib Description"
-
-symlib_name="MYsymbolLib"
-kicad_sym_file="MYsymbol.kicad_sym"
-symdescr="MYsymbolLib Description"
 ```
 ./kicad_addcustom_library.sh
 ```
+
 ```
  ^ ^ ^  E D I T  T H I S  F I L E  ^ ^ ^
  usage:
