@@ -75,12 +75,12 @@ if [ $# -eq 1 -a "$1" == "--clone-pull" ]; then
  sed -i '$ s/)$//' "$fp_table_file"
  echo "Appending custom library to $fp_table_file"
     head -n -1 $localFootprintStorage/fp-lib-table > $kicad_config_dir/fp-lib-table;
-echo "  (lib (name $fplib_name)(type KiCad)(uri \$KISYSMINE/$pretty_file)(options \"\")(descr \"$fpdescr\")))" >> "$fp_table_file"
+echo "  (lib (name $fplib_name)(type KiCad)(uri \${KISYSMINE}/$pretty_file)(options \"\")(descr \"$fpdescr\")))" >> "$fp_table_file"
  sym_table_file="$kicad_config_dir/sym-lib-table"
  sed -i '$ s/)$//' "$sym_table_file"
  echo "Appending custom library to $sym_table_file"
     head -n -1 $localSymbolStorage/sym-lib-table > $kicad_config_dir/sym-lib-table;
-echo "  (lib (name \"$symlib_name\")(type \"KiCad\")(uri \"\$KISYSMINE/$kicad_sym_file\")(options \"\")(descr \"$symdescr\")))" >> "$sym_table_file"
+echo "  (lib (name \"$symlib_name\")(type \"KiCad\")(uri \${KISYSMINE}/$kicad_sym_file\")(options \"\")(descr \"$symdescr\")))" >> "$sym_table_file"
 exit
 fi
 usage
