@@ -1,2 +1,104 @@
 # add_lib-kicad67
 Auto download kicad-footprints and kicad-symbols. updates Footprint and Symbol Table files so your custom libraries are reflected in KiCad globally.
+
+# installing
+```
+chmod +x kicad_addcustom_library.sh
+```
+adjust script variables to match your system
+```
+nano kicad_addcustom_library.sh
+```
+fplib_name="MYfootprintLib"
+pretty_file="MYfootprintLib.pretty"
+fpdescr="MYfootprintLib Description"
+
+symlib_name="MYsymbolLib"
+kicad_sym_file="MYsymbol.kicad_sym"
+symdescr="MYsymbolLib Description"
+```
+./kicad_addcustom_library.sh
+```
+```
+ ^ ^ ^  E D I T  T H I S  F I L E  ^ ^ ^
+ usage:
+      --clone-pull         
+
+ (pulls from https://www.gitlab.com)
+ into /crypt-storage1/electronics/KiCad/LIBRARIES 
+```
+adjust variables to match your system
+```
+fplib_name="MYfootprintLib"
+pretty_file="MYfootprintLib.pretty"
+fpdescr="MYfootprintLib Description"
+
+symlib_name="MYsymbolLib"
+kicad_sym_file="MYsymbol.kicad_sym"
+symdescr="MYsymbolLib Description"
+```
+run kicad_addcustom_library.sh
+```
+./kicad_addcustom_library.sh --clone-pull
+```
+```
+pulling from kicad-footprints
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 5 (delta 3), reused 4 (delta 3), pack-reused 0
+Unpacking objects: 100% (5/5), 3.82 KiB | 130.00 KiB/s, done.
+From https://gitlab.com/kicad/libraries/kicad-footprints
+   fa95d28c6..d63c22e54  master     -> origin/master
+Updating fa95d28c6..d63c22e54
+Fast-forward
+ Package_CSP.pretty/Analog_LFCSP-16-1EP_4x4mm_P0.65mm_EP2.35x2.35mm.kicad_mod  | 76 +++++++++++++++++++++++++++++++++
+ .../Analog_LFCSP-16-1EP_4x4mm_P0.65mm_EP2.35x2.35mm_ThermalVias.kicad_mod     | 86 ++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 162 insertions(+)
+ create mode 100644 Package_CSP.pretty/Analog_LFCSP-16-1EP_4x4mm_P0.65mm_EP2.35x2.35mm.kicad_mod
+ create mode 100644 Package_CSP.pretty/Analog_LFCSP-16-1EP_4x4mm_P0.65mm_EP2.35x2.35mm_ThermalVias.kicad_mod
+ 
+pulling from kicad-symbols
+Already up to date.
+ 
+Appending custom library to /home/su_pyrow/.config/kicad/fp-lib-table
+Appending custom library to /home/su_pyrow/.config/kicad/sym-lib-table
+```
+verify the new tables went to correct location
+![kicad-config-dir](https://user-images.githubusercontent.com/25697854/216488413-1580b7a9-837f-421e-bc97-a4f219601954.png)
+```
+ls -l ~/.config/kicad
+```
+```
+drwxrwxr-x 4 su_pyrow su_pyrow  4096 Jun 25  2021 5.99
+drwxrwxr-x 4 su_pyrow su_pyrow  4096 Nov 20  2021 6.0
+drwxrwxr-x 4 su_pyrow su_pyrow  4096 Nov 26 11:02 6.99
+-rw-rw-r-- 1 su_pyrow su_pyrow 21007 Feb  2 14:42 fp-lib-table
+-rw-rw-r-- 1 su_pyrow su_pyrow 31809 Feb  2 14:42 sym-lib-table
+```
+if your directory structure looks like this, then you must symbolically link fp-lib-table and sym-lib-table to the version you use.
+
+add symbolic links to the KiCad version you use
+```
+mv ~/.config/kicad/7.0/fp-lib-table ~/.config/kicad/7.0/fp-lib-table-original
+mv ~/.config/kicad/7.0/sym-lib-table ~/.config/kicad/7.0/sym-lib-table-original
+ln -s ~/.config/kicad/fp-lib-table ~/.config/kicad/7.0/fp-lib-table
+ln -s ~/.config/kicad/sym-lib-table ~/.config/kicad/7.0/sym-lib-table
+```
+```
+cd ~/.config/kicad/7.0
+```
+```
+ls -l
+```
+```
+drwxrwxr-x 2 su_pyrow su_pyrow  4096 Feb  3 02:13 colors
+lrwxrwxrwx 1 su_pyrow su_pyrow    41 Feb  3 02:20 fp-lib-table -> /home/su_pyrow/.config/kicad/fp-lib-table
+-rw-r--r-- 1 su_pyrow su_pyrow 20719 Feb  3 02:14 fp-lib-table-original
+lrwxrwxrwx 1 su_pyrow su_pyrow    42 Feb  3 02:20 sym-lib-table -> /home/su_pyrow/.config/kicad/sym-lib-table
+-rw-r--r-- 1 su_pyrow su_pyrow 31699 Feb  3 02:14 sym-lib-table-original
+```
+restart kicad and verify
+![kicad-verify-lib](https://user-images.githubusercontent.com/25697854/216489721-967e78b5-8b60-499e-9571-c01c4c9a9df4.png)
+
+enjoy
