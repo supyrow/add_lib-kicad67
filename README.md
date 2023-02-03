@@ -51,6 +51,8 @@ symlib_name="MYsymbolLib"
 kicad_sym_file="MYsymbol.kicad_sym"
 symdescr="MYsymbolLib Description"
 ```
+# check all variables at the top of the script carefully, one more time!
+
 # run kicad_addcustom_library.sh
 ```
 ./kicad_addcustom_library.sh --clone-pull
