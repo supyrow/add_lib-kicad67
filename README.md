@@ -78,7 +78,7 @@ Already up to date.
 Appending custom library to /home/su_pyrow/.config/kicad/fp-lib-table
 Appending custom library to /home/su_pyrow/.config/kicad/sym-lib-table
 ```
-#verify the new tables went to correct location
+# verify the new tables went to correct location
 
 ![kicad-config-dir](https://user-images.githubusercontent.com/25697854/216488413-1580b7a9-837f-421e-bc97-a4f219601954.png)
 ```
