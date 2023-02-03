@@ -1,11 +1,25 @@
 # add_lib-kicad67
-Auto download kicad-footprints and kicad-symbols. updates Footprint and Symbol Table files so your custom libraries are reflected in KiCad globally.
+
+Automate downloading and updating of `KiCad-6-dev` `KiCad-7` AKA `KiCad-nightly` Schematic symbols, PCB footprints, update the symbol and footprint tables WITH your custom libraries.
+
+Download bleeding edge symbols and footprint tables and add your own custom library!
+
+There are three reasons why you might want to run this script:
+
+* You want local copies of bleeding edge symbols, and foorptints
+* you have your own working library(symbols/footprints)
+* sick of needing to add them to every single project you start.
+
+updates Footprint and Symbol Table files so your custom libraries are reflected in KiCad globally.
+# Note:
+`I have been personally using this and previous derivatives of this script for over five years, I like to do things 'off the beaten path'  so if you are similar... go ahead with this.`
+
 
 # installing
 ```
 chmod +x kicad_addcustom_library.sh
 ```
-adjust script variables to match your system
+# adjust script variables to match your system
 ```
 nano kicad_addcustom_library.sh
 ```
@@ -27,7 +41,7 @@ symdescr="MYsymbolLib Description"
  (pulls from https://www.gitlab.com)
  into /crypt-storage1/electronics/KiCad/LIBRARIES 
 ```
-adjust variables to match your system
+# adjust variables to match your system
 ```
 fplib_name="MYfootprintLib"
 pretty_file="MYfootprintLib.pretty"
@@ -37,7 +51,7 @@ symlib_name="MYsymbolLib"
 kicad_sym_file="MYsymbol.kicad_sym"
 symdescr="MYsymbolLib Description"
 ```
-run kicad_addcustom_library.sh
+# run kicad_addcustom_library.sh
 ```
 ./kicad_addcustom_library.sh --clone-pull
 ```
@@ -64,7 +78,8 @@ Already up to date.
 Appending custom library to /home/su_pyrow/.config/kicad/fp-lib-table
 Appending custom library to /home/su_pyrow/.config/kicad/sym-lib-table
 ```
-verify the new tables went to correct location
+#verify the new tables went to correct location
+
 ![kicad-config-dir](https://user-images.githubusercontent.com/25697854/216488413-1580b7a9-837f-421e-bc97-a4f219601954.png)
 ```
 ls -l ~/.config/kicad
@@ -76,9 +91,9 @@ drwxrwxr-x 4 su_pyrow su_pyrow  4096 Nov 26 11:02 6.99
 -rw-rw-r-- 1 su_pyrow su_pyrow 21007 Feb  2 14:42 fp-lib-table
 -rw-rw-r-- 1 su_pyrow su_pyrow 31809 Feb  2 14:42 sym-lib-table
 ```
-if your directory structure looks like this, then you must symbolically link fp-lib-table and sym-lib-table to the version you use.
+# if your directory structure looks like this, then you must symbolically link fp-lib-table and sym-lib-table to the version you use.
 
-add symbolic links to the KiCad version you use
+# add symbolic links to the KiCad version you use
 ```
 mv ~/.config/kicad/7.0/fp-lib-table ~/.config/kicad/7.0/fp-lib-table-original
 mv ~/.config/kicad/7.0/sym-lib-table ~/.config/kicad/7.0/sym-lib-table-original
@@ -98,7 +113,10 @@ lrwxrwxrwx 1 su_pyrow su_pyrow    41 Feb  3 02:20 fp-lib-table -> /home/su_pyrow
 lrwxrwxrwx 1 su_pyrow su_pyrow    42 Feb  3 02:20 sym-lib-table -> /home/su_pyrow/.config/kicad/sym-lib-table
 -rw-r--r-- 1 su_pyrow su_pyrow 31699 Feb  3 02:14 sym-lib-table-original
 ```
-restart kicad and verify
-![kicad-verify-lib](https://user-images.githubusercontent.com/25697854/216489721-967e78b5-8b60-499e-9571-c01c4c9a9df4.png)
+# restart kicad and verify
 
-enjoy
+![kicad-verify-footprint](https://user-images.githubusercontent.com/25697854/216496463-9a708e23-a4e1-49cb-b4a8-bdc7640373fd.png)
+![kicad-verify-symbol](https://user-images.githubusercontent.com/25697854/216496477-fc0d260a-cfa1-46a2-9f07-901ba152fb17.png)
+
+
+# enjoy
